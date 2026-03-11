@@ -1,0 +1,193 @@
+/* ── Overlay ─────────────────────────────────────────── */
+.edit-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: em-fade-in 0.18s ease;
+}
+
+@keyframes em-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.edit-modal__card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: em-slide-up 0.22s ease;
+}
+
+@keyframes em-slide-up {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Header ──────────────────────────────────────────── */
+.edit-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.edit-modal__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.edit-modal__close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+  line-height: 1;
+}
+
+.edit-modal__close:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+/* ── Error Banner ────────────────────────────────────── */
+.edit-modal__error {
+  margin: 14px 24px 0;
+  padding: 11px 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Form ────────────────────────────────────────────── */
+.edit-modal__form {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-modal__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-modal__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.edit-modal__input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  box-sizing: border-box;
+}
+
+.edit-modal__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.edit-modal__textarea {
+  resize: vertical;
+  min-height: 68px;
+}
+
+/* ── Actions ─────────────────────────────────────────── */
+.edit-modal__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.edit-modal__btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.edit-modal__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-modal__btn:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.edit-modal__btn--cancel {
+  background: var(--border);
+  color: var(--text-secondary);
+}
+
+.edit-modal__btn--cancel:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.edit-modal__btn--save {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.edit-modal__btn--save:hover:not(:disabled) {
+  background: var(--primary-dark, #4f46e5);
+}
+
+/* ── Spinner ─────────────────────────────────────────── */
+.edit-modal__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: em-spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes em-spin {
+  to { transform: rotate(360deg); }
+}
